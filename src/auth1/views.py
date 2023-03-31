@@ -8,6 +8,7 @@ from .models import Profile
 # Create your views here.
 
 def home(request):
+	# Returns the user back to the home page.
 	return render(request,'home.html',{'name':'Dr Abimbola Oluyemi'})
 
 
@@ -15,10 +16,12 @@ def intro(request):
 	return render(request,'intro.html',{'name':'Dr Abimbola Oluyemi'})
 
 def about(request):
+	# This page tells the user about the site owner
     return render(request, 'about.html', {'name':'Dr Abimbola Oluyemi'})
 
 
 def projects(request):
+	# This page tells the user about the projects done by owner
     return render(request, 'projects.html', {'name':'Dr Abimbola Oluyemi'})
 
 def login_user(request):
@@ -57,6 +60,7 @@ def register_user(request):
 	return render(request,'register.html',context)
 
 def edit_profile(request):
+	# This function allows the user to edit personal  details
 	if request.method =='POST':
 		form = EditProfileForm(request.POST,instance=request.user)
 		profile_form = ProfileForm(request.POST, instance=request.user.profile)
@@ -76,6 +80,7 @@ def edit_profile(request):
 	return render(request,"edit_profile.html",context)
 
 def change_password(request):
+	# This function allows the user to change password
 	if request.method =='POST':
 		form = PasswordChangeForm(data=request.POST,user=request.user)
 		if form.is_valid():
